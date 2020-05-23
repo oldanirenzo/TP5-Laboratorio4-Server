@@ -39,7 +39,7 @@ public class InstrumentoController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body("{\"message\": \"Error. Registro NO encontrado.\"}");
 		}
-	}// getAll()
+	}
 
 	@GetMapping(value = "/find/{id}")
 	@Transactional
@@ -49,7 +49,7 @@ public class InstrumentoController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"Error. NO encontrado.\"}");
 		}
-	}// getOne()
+	}
 
 	@PostMapping(value = "/save")
 	@Transactional
@@ -60,7 +60,7 @@ public class InstrumentoController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body("{\"message\": \"Error. NO encontrado. Metodo usado: save\"}");
 		}
-	}// save()
+	}
 
 	@PutMapping(value = "/put/{id}")
 	@Transactional
@@ -71,9 +71,10 @@ public class InstrumentoController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body("{\"message\": \"Error. NO encontrado. Metodo usado: put\"}");
 		}
-	}// put()
+	}
 
 	@DeleteMapping(value = "/delete/{id}")
+	@Transactional
 	public ResponseEntity<?> delete(@PathVariable int id) {
 		boolean borrado = service.delete(id);
 		if (borrado) {
@@ -81,5 +82,5 @@ public class InstrumentoController {
 		} else {
 			return ResponseEntity.status(400).body("'messsage': 'Error al eliminar'");
 		}
-	}// delete()
+	}
 }

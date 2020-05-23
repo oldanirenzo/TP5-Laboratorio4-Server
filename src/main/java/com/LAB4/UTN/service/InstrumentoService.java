@@ -70,6 +70,7 @@ public class InstrumentoService {
 
 	}// update()
 
+	@Transactional
 	public boolean delete(int id) {
 		try {
 			repository.deleteById(id);
